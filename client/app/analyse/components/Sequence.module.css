@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.header {
+  margin-bottom: 2rem;
+}
+.innerContainer {
+  margin-top: 5rem;
+}
+.container textarea {
+  border: 0;
+  width: 1000px;
+  border-radius: 1rem;
+  background: #393e46;
+  padding: 1rem;
+}
+
+.buttonContainer button {
+  margin-top: 1.5rem;
+  margin-right: 1rem;
+  border: 1.2px solid aqua;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  background: black;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.buttonContainer button:hover {
+  transform: background;
+  background-color: mediumpurple;
+  cursor: pointer;
+  border: 0;
+}
+
+.resultsContainer {
+  margin-top: 2rem;
+}
+
+

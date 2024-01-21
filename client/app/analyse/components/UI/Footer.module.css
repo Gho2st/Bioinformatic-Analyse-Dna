@@ -1,0 +1,9 @@
+.Footer{
+    margin-top: 2rem;
+    padding: 2rem;
+}
+
+.Footer p{
+    text-align: center;
+    color: gray;
+}
