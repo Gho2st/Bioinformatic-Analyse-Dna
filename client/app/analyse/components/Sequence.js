@@ -36,8 +36,8 @@ export default function Sequence({
 
           {analysisResultsDNA && (
             <div className={classes.resultsContainer}>
-              <p>Reverse complement: {analysisResultsDNA.reverse_complement}</p>
-              <p>Complement: {analysisResultsDNA.complement}</p>
+              <p>Odwrotna komplementarna nić: {analysisResultsDNA.reverse_complement}</p>
+              <p>Komplementarna nić: {analysisResultsDNA.complement}</p>
               <p>Length: {analysisResultsDNA.length}</p>
               <p>AT Content: {analysisResultsDNA.at_content}</p>
               <p>GC Content: {analysisResultsDNA.gc_content}</p>

@@ -5,6 +5,16 @@
   margin-bottom: 5rem;
 }
 
+.selectedFile{
+  margin-top: 1rem;
+  color: green;
+  font-weight: bold;
+}
+
 .input{
   display: none;
+}
+
+.results{
+  margin-top: 3rem;
 }

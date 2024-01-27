@@ -10,3 +10,8 @@
     display: flex;
     justify-content: center;
 }
+.table{
+    max-width: 70%;
+    margin: auto;
+    margin-top: 4rem;
+}

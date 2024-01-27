@@ -21,6 +21,7 @@
     "react-three-fiber": "^6.0.13",
     "slick-carousel": "^1.8.1",
     "three": "^0.160.0",
+    "three-orbitcontrols": "^2.110.3",
     "three-stdlib": "^2.29.4"
   },
   "devDependencies": {

@@ -15,7 +15,6 @@ export default function Header() {
             do szybkiego zrozumienia podstawowych cech sekwencji DNA bez
             konieczności zaawansowanej wiedzy biologicznej.
           </p>
-          <button className={classes.button}>Analizuj!</button>
         </div>
         <div className={classes.imageContainer}>
           <Image

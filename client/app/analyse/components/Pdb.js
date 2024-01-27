@@ -36,27 +36,31 @@ export default function Pdb({
             <Button text="Wybierz plik" onClick={handleButtonClick} />
             <Button text="Analyse PDB file!" onClick={handlePdbUpload} />
             <Button text="Reset!" onClick={handleReset} />
-            <p>Wybrany plik: {pdbFileName ? pdbFileName : "brak"}</p>
+            <p className={classes.selectedFile}>Wybrany plik: {pdbFileName ? pdbFileName : "brak"}</p>
           </div>
-          {analysisResultsPDB && <p>Protein name: {analysisResultsPDB.name}</p>}
-          {analysisResultsPDB && (
-            <p>Protein resolution: {analysisResultsPDB.resolution}</p>
-          )}
-          {analysisResultsPDB && (
-            <p>Chains number: {analysisResultsPDB.num_chains}</p>
-          )}
-          {analysisResultsPDB && (
-            <p>num_residues: {analysisResultsPDB.num_residues}</p>
-          )}
-          {analysisResultsPDB && (
-            <p>num_atoms: {analysisResultsPDB.num_atoms}</p>
-          )}
-          {analysisResultsPDB && (
-            <p>first_chain_id: {analysisResultsPDB.first_chain_id}</p>
-          )}
-          {analysisResultsPDB && (
-            <p>first_residue_name: {analysisResultsPDB.first_residue_name}</p>
-          )}
+          <div className={classes.results}>
+            {analysisResultsPDB && (
+              <p>Protein name: {analysisResultsPDB.name}</p>
+            )}
+            {analysisResultsPDB && (
+              <p>Protein resolution: {analysisResultsPDB.resolution}</p>
+            )}
+            {analysisResultsPDB && (
+              <p>Chains number: {analysisResultsPDB.num_chains}</p>
+            )}
+            {analysisResultsPDB && (
+              <p>num_residues: {analysisResultsPDB.num_residues}</p>
+            )}
+            {analysisResultsPDB && (
+              <p>num_atoms: {analysisResultsPDB.num_atoms}</p>
+            )}
+            {analysisResultsPDB && (
+              <p>first_chain_id: {analysisResultsPDB.first_chain_id}</p>
+            )}
+            {analysisResultsPDB && (
+              <p>first_residue_name: {analysisResultsPDB.first_residue_name}</p>
+            )}
+          </div>
           {/* <Molecule /> */}
         </div>
       </div>

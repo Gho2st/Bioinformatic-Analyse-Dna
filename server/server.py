@@ -2,7 +2,9 @@ import io
 import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from Bio import SeqIO
 from Bio.Seq import Seq
+from Bio.SeqUtils import molecular_weight
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from Bio.PDB import PDBParser
@@ -152,7 +154,6 @@ def analyze_fasta():
         return {"error": "No FASTA file provided"}
 
     try:
-        # Read the contents of the file
         fasta_content = fasta_file.read()
 
         # Zapisz plik FASTA na serwerze
@@ -162,30 +163,37 @@ def analyze_fasta():
 
         print("Fasta zaladowany na serwerze")
 
-        # Analiza pliku FASTA
+         # Analiza pliku FASTA
         result = {
             "sequences": [],
-            "summary": {}
         }
 
+        
         with open(file_path, "r") as fasta_file:
             for record in SeqIO.parse(fasta_file, "fasta"):
+                protein_analysis = ProteinAnalysis(str(record.seq))
+                isoelectric_point = str(round(protein_analysis.isoelectric_point(),3))
+                molecular_weight = str(round(protein_analysis.molecular_weight(),3))
+                amino_acid_percentages = protein_analysis.get_amino_acids_percent()
+                amino_acid_plot = plot_amino_acid_percentages(amino_acid_percentages)
+
                 sequence_info = {
+                    'sequence': str(record.seq),
                     "name": record.id,
                     "length": len(record),
-                    "gc_content": gc_fraction(record.seq) * 100
+                    "gc_content": gc_fraction(record.seq) * 100,
+                    "isoelectric_point": isoelectric_point,
+                    "molecular_weight":molecular_weight,
+                    "amino_acid_plot":amino_acid_plot,
                 }
                 result["sequences"].append(sequence_info)
 
-        result["summary"]["total_sequences"] = len(result["sequences"])
-        result["summary"]["average_length"] = sum(seq["length"] for seq in result["sequences"]) / len(result["sequences"])
-        result["summary"]["average_gc_content"] = sum(seq["gc_content"] for seq in result["sequences"]) / len(result["sequences"])
 
         # Usuń plik po analizie (opcjonalne)
         os.remove(file_path)
 
         return jsonify(result)
-
+    
     except Exception as e:
         return {"error": f"An error occurred: {str(e)}"}
         
